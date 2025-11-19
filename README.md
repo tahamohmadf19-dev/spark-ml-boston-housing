@@ -1,84 +1,14 @@
-# Spark ML Regression - Boston Housing (Improved Version)
+# Spark ML Regression - Boston Housing Dataset
 
 ## نظرة عامة
 
-هذا المشروع يوضح تطبيق **production-ready** لنماذج الانحدار (Regression) باستخدام **PySpark ML** على مجموعة بيانات Boston Housing. تم تحسين الكود ليتبع أفضل الممارسات في Spark ML ويكون جاهزاً للاستخدام في مشاريع حقيقية.
+هذا المشروع يوضح تطبيق نماذج الانحدار (Regression) باستخدام **PySpark ML** على مجموعة بيانات Boston Housing، مع استخدام أفضل الممارسات في Spark ML.
 
-## التحسينات الرئيسية
+## المحتويات
 
-### 1. بنية Pipeline كاملة ✅
-- جميع خطوات المعالجة والنمذجة منظمة في **ML Pipelines**
-- سهولة حفظ وتحميل النموذج كوحدة واحدة
-- تقليل احتمالية الأخطاء في الإنتاج
-
-### 2. ضبط المعاملات التلقائي (Hyperparameter Tuning) ✅
-- استخدام **CrossValidator** مع **ParamGridBuilder**
-- تجربة منهجية لمجموعات مختلفة من المعاملات
-- اختيار أفضل نموذج بناءً على الأداء الفعلي
-
-### 3. جداول مقارنة منظمة ✅
-- مقارنة شاملة لجميع النماذج في جدول واحد
-- رسوم بيانية توضيحية للأداء
-- سهولة تقييم النماذج المختلفة
-
-### 4. تحليل أهمية الميزات (Feature Importance) ✅
-- تحديد الميزات الأكثر تأثيراً في التنبؤ
-- رسم بياني يوضح الأهمية النسبية لكل ميزة
-- مفيد لفهم النموذج وتفسير النتائج
-
-### 5. إدارة الذاكرة الفعالة ✅
-- استخدام **cache()** للبيانات المستخدمة بشكل متكرر
-- تحسين الأداء للبيانات الكبيرة
-
-### 6. دوال قابلة لإعادة الاستخدام ✅
-- كود منظم في دوال مستقلة
-- سهولة التطبيق على مجموعات بيانات أخرى
-- تقليل التكرار في الكود
-
-### 7. توثيق شامل ✅
-- شرح واضح لكل خطوة في Markdown cells
-- تعليقات توضيحية في الكود
-- منهجية واضحة للمعالجة والنمذجة
-
-## المنهجية
-
-### تقسيم البيانات
-- **70%** للتدريب (Training)
-- **15%** للتحقق (Validation)
-- **15%** للاختبار (Test)
-
-### معالجة القيم الشاذة (Outlier Handling)
-- استخدام طريقة **IQR** (Interquartile Range)
-- الحد الأدنى: Q1 - 1.5 × IQR
-- الحد الأقصى: Q3 + 1.5 × IQR
-- القيم خارج هذه الحدود يتم تقليصها (clipping)
-
-### التطبيع (Standardization)
-- **Z-score normalization**: (x - mean) / std
-- المتوسط والانحراف المعياري محسوبان من بيانات التدريب فقط
-- نفس الإحصائيات تُطبق على بيانات التحقق والاختبار
-
-### هندسة الميزات (Feature Engineering)
-تم إنشاء ميزات تفاعلية (interaction features):
-- **RM_LSTAT**: التفاعل بين متوسط عدد الغرف ونسبة السكان ذوي الوضع المنخفض
-- **NOX_INDUS**: التفاعل بين تركيز أكسيد النيتريك والنسبة الصناعية
-- **DIS_RAD**: التفاعل بين المسافة لمراكز العمل وإمكانية الوصول للطرق السريعة
-
-### النماذج المستخدمة
-1. **Linear Regression**: نموذج خطي بسيط كخط أساس
-2. **Decision Tree Regressor**: نموذج شجرة قرار
-3. **Random Forest Regressor**: نموذج الغابة العشوائية مع ضبط المعاملات
-
-## البنية
-
-```
-boston_housing_spark/
-├── Improved_Spark_ML_Boston_Housing.ipynb  # النوتبوك المحسّن
-├── original_notebook.ipynb                  # النوتبوك الأصلي للمقارنة
-├── README.md                                # هذا الملف
-├── requirements.txt                         # المتطلبات
-└── improvements_summary.md                  # ملخص التحسينات
-```
+- **Spark_ML_Regression_Boston_Housing.ipynb**: النوتبوك الرئيسي للمشروع
+- **README.md**: هذا الملف
+- **requirements.txt**: المتطلبات البرمجية
 
 ## المتطلبات
 
@@ -99,97 +29,88 @@ pip install -r requirements.txt
 
 ### 2. تحضير البيانات
 
-تأكد من وجود ملف `Boston House Price Data.csv` في نفس المجلد أو قم بتحديث المسار في الكود.
+تأكد من وجود ملف `Boston House Price Data.csv` أو قم بتحديث المسار في الكود.
 
 ### 3. تشغيل النوتبوك
 
+#### باستخدام Jupyter Notebook:
 ```bash
-jupyter notebook Improved_Spark_ML_Boston_Housing.ipynb
+jupyter notebook Spark_ML_Regression_Boston_Housing.ipynb
 ```
 
-أو استخدم Google Colab:
-- ارفع النوتبوك إلى Google Drive
-- افتحه باستخدام Google Colab
-- ارفع ملف البيانات إلى `/content/`
+#### باستخدام Google Colab:
+1. ارفع النوتبوك إلى Google Drive
+2. افتحه باستخدام Google Colab
+3. ارفع ملف البيانات إلى `/content/`
+4. شغّل الـ cells
+
+## المنهجية
+
+### تقسيم البيانات
+- **70%** للتدريب (Training)
+- **15%** للتحقق (Validation)
+- **15%** للاختبار (Test)
+
+### معالجة البيانات
+- فحص القيم المفقودة
+- معالجة القيم الشاذة (Outliers) باستخدام IQR
+- التطبيع (Standardization) باستخدام Z-score
+
+### هندسة الميزات
+إنشاء ميزات تفاعلية:
+- **RM_LSTAT**: التفاعل بين متوسط عدد الغرف ونسبة السكان ذوي الوضع المنخفض
+- **NOX_INDUS**: التفاعل بين تركيز أكسيد النيتريك والنسبة الصناعية
+- **DIS_RAD**: التفاعل بين المسافة لمراكز العمل وإمكانية الوصول للطرق السريعة
+
+### النماذج المستخدمة
+1. **Linear Regression**: نموذج خطي بسيط
+2. **Decision Tree Regressor**: نموذج شجرة قرار
+3. **Random Forest Regressor**: نموذج الغابة العشوائية مع Pipeline و CrossValidator
+
+## الميزات الرئيسية
+
+- ✅ استخدام **Pipeline** لتنظيم خطوات المعالجة والنمذجة
+- ✅ **CrossValidator** مع **ParamGridBuilder** لضبط المعاملات تلقائياً
+- ✅ معالجة منهجية للقيم الشاذة والتطبيع
+- ✅ تقييم شامل للنماذج باستخدام RMSE, MAE, R²
+- ✅ تحليل أهمية الميزات (Feature Importance)
+- ✅ حفظ النموذج النهائي
+
+## البنية
+
+```
+boston_housing_spark/
+├── Spark_ML_Regression_Boston_Housing.ipynb  # النوتبوك الرئيسي
+├── README.md                                  # هذا الملف
+└── requirements.txt                           # المتطلبات
+```
 
 ## النتائج المتوقعة
 
-### مقارنة النماذج
-
-| Model | Train RMSE | Val RMSE | Train MAE | Val MAE | Train R² | Val R² |
-|-------|-----------|----------|-----------|---------|----------|--------|
-| Linear Regression | ~3.5 | ~4.0 | ~2.5 | ~3.0 | ~0.85 | ~0.80 |
-| Decision Tree | ~2.0 | ~5.0 | ~1.5 | ~3.5 | ~0.95 | ~0.75 |
-| Random Forest (Tuned) | ~2.5 | ~4.5 | ~1.8 | ~3.2 | ~0.92 | ~0.78 |
+النماذج تحقق أداءً جيداً على مجموعة بيانات Boston Housing:
+- **Linear Regression**: RMSE ~4.0
+- **Decision Tree**: RMSE ~5.0
+- **Random Forest (Tuned)**: RMSE ~4.5, R² ~0.78
 
 *القيم الفعلية قد تختلف قليلاً حسب التقسيم العشوائي*
 
-### أهم الميزات
+## التطبيق على بيانات أخرى
 
-عادةً ما تكون الميزات الأكثر تأثيراً:
-1. **RM_LSTAT**: التفاعل بين عدد الغرف والوضع الاجتماعي
-2. **PTRATIO**: نسبة الطلاب للمعلمين
-3. **CRIM**: معدل الجريمة
-
-## مقارنة مع النسخة الأصلية
-
-### النسخة الأصلية
-- ❌ كود يدوي ومتكرر
-- ❌ لا يوجد Pipeline
-- ❌ لا يوجد CrossValidation
-- ❌ نتائج متفرقة وغير منظمة
-- ❌ لا يوجد تحليل لأهمية الميزات
-- ⚠️ مناسب للتعلم فقط
-
-**التقييم: 7.5/10**
-
-### النسخة المحسّنة
-- ✅ بنية Pipeline كاملة
-- ✅ CrossValidator لضبط المعاملات
-- ✅ جداول مقارنة شاملة
-- ✅ تحليل أهمية الميزات
-- ✅ دوال قابلة لإعادة الاستخدام
-- ✅ توثيق شامل
-- ✅ جاهز للإنتاج
-
-**التقييم: 9.5/10**
-
-## التطبيق على مجموعات بيانات أخرى
-
-هذا الإطار يمكن تطبيقه بسهولة على مجموعات بيانات أخرى:
-
-1. **OULAD** (Open University Learning Analytics Dataset)
-2. **xAPI** (Educational Data Mining)
-3. **CO2 Emissions**
-4. **Bank Marketing**
-
-### خطوات التطبيق:
-
+يمكن تطبيق نفس المنهجية على مجموعات بيانات regression أخرى:
 1. قم بتحميل البيانات الجديدة
-2. حدد العمود المستهدف (target_column)
-3. قم بتعديل هندسة الميزات حسب البيانات
-4. شغّل نفس الكود!
-
-## الخطوات التالية
-
-### تحسينات إضافية محتملة:
-
-1. **Custom Transformers**: إنشاء Transformers مخصصة لمعالجة القيم الشاذة والتطبيع داخل Pipeline
-2. **Ensemble Methods**: دمج عدة نماذج للحصول على تنبؤات أفضل
-3. **Feature Selection**: استخدام تقنيات اختيار الميزات لتحسين الأداء
-4. **Deep Learning**: تجربة نماذج التعلم العميق للمقارنة
-5. **MLflow Integration**: تتبع التجارب والنماذج باستخدام MLflow
+2. حدد العمود المستهدف (target column)
+3. عدّل هندسة الميزات حسب البيانات
+4. شغّل نفس الخطوات
 
 ## المراجع
 
 - [Apache Spark ML Documentation](https://spark.apache.org/docs/latest/ml-guide.html)
 - [Boston Housing Dataset](https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html)
 - [PySpark ML Pipelines](https://spark.apache.org/docs/latest/ml-pipeline.html)
-- [Cross-Validation in Spark](https://spark.apache.org/docs/latest/ml-tuning.html)
 
 ## المؤلف
 
-تم تطوير هذا المشروع كجزء من مشروع تخرج في تحليلات البيانات الكبيرة باستخدام Apache Spark.
+تم تطوير هذا المشروع كجزء من مشروع في تحليلات البيانات الكبيرة باستخدام Apache Spark.
 
 ## الترخيص
 
@@ -197,4 +118,4 @@ jupyter notebook Improved_Spark_ML_Boston_Housing.ipynb
 
 ---
 
-**ملاحظة**: هذا المشروع يهدف لتوضيح أفضل الممارسات في Spark ML ويمكن استخدامه كنموذج لمشاريع أخرى.
+**رابط المشروع:** https://github.com/tahamohmadf19-dev/spark-ml-boston-housing
